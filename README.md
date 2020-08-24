@@ -8,3 +8,13 @@ week1:
 
 >>Assisnment_Screenshots folder:
 contains screenshots of remote(gitHub) branches commits history. contains screenshots of local commits history.(git log,git reflog after reset,rebase).
+
+DateTimeCalculatorBigHandle:
+this file consists of different java classes to meet the given menu.it consists of a big file RandomNumbers.txt which consists of 100 thousand random inputs.
+This inputs are given through FileinputStream and operations are done and outputs are stored in History100.txt,Also created other formats i.e; json,csv,xml.
+This is made using FileFormatting.class and the natural phrases like month,day,week are also conveted using NaturalPhrases.java class.
+
+DateTimeCalSql:
+This contains the same files as in DateTimeCalculatorBighandle and a jdbs connection is setpu using the jdbc driver and create two tables choiceInputs and the choiceHistoryOutputs
+In the HistoryTablePsql.java class values are inserted into the table using sql query and the resultant output values are also inseted into the choiceHistoryOutputs table.
+also the output are stored in historyoutputs.txt/.csv/.json/.xml files.
