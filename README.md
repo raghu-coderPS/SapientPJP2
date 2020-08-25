@@ -18,3 +18,7 @@ DateTimeCalSql:
 This contains the same files as in DateTimeCalculatorBighandle and a jdbs connection is setpu using the jdbc driver and create two tables choiceInputs and the choiceHistoryOutputs
 In the HistoryTablePsql.java class values are inserted into the table using sql query and the resultant output values are also inseted into the choiceHistoryOutputs table.
 also the output are stored in historyoutputs.txt/.csv/.json/.xml files.
+
+DateTimeCalWeb:
+This project contains a example.jsp file which is the index page.In the input box we should enter a Date and a drop down menu is present(month,year,day,week) which which give the date in natural lang phrases.Ex.(if the date is 12-08-2019 and if u select year it will give output as lastyear and if u select month it will be 12 month earlier).
+The success.jsp will print the output.A servelet Mvc_success.java is used to connect between the jsp and the NaturalLangPhrases class.
