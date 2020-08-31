@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html><head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+     <meta http-equiv="PICS-Label" content="(PICS-1.1 &quot;http://www.classify.org/safesurf/&quot; L gen true for &quot;http://www.onlineconversion.com/&quot; r (SS~~000 1))">
+
+<title>Online Conversion - Determine Day and Week Number</title>
+<meta name="DESCRIPTION" content="Calculate the day number and week number of a given date.">
+<meta name="KEYWORDS" content="date, day, week, number, julian, calendar, daynumber, weeknumber">
+
+     <link href="./assets/style.css" rel="stylesheet" type="text/css">
+
+     <script src="./assets/misc_functions.js" type="text/javascript"></script>
+
+     <script language="Javascript" src="date_time_check.js" type="text/javascript"></script>
+     <script>
+         $(document).ready(function () {
+   $('#txtDate').datepicker();
+   $('#follow_Date').datepicker();
+});
+function getname() {
+   var tt = document.getElementById('txtDate').value;
+   var date = new Date(tt);
+   var newdate = new Date(date);
+   var days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+   var months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+
+   var day = days[newdate.getDay()];
+   var month = months[newdate.getMonth()];
+      document.getElementById('weekno').value = day;
+      document.getElementById('monthname').value = month;
+   
+}
+function getdate() {
+   var tt = document.getElementById('txtDate').value;
+   var days=document.getElementById('days').value;
+   var months=document.getElementById('months').value;
+   var years=document.getElementById('years').value;
+   var date = new Date(tt);
+   var newdate = new Date(date);
+
+   newdate.setDate(newdate.getDate()+parseInt(days)+31*parseInt(months)+365*parseInt(years));
+   var dd = newdate.getDate();
+   var mm = newdate.getMonth() + 1;
+   var y = newdate.getFullYear();
+
+   var someFormattedDate = mm + '/' + dd + '/' + y;
+      document.getElementById('follow_Date').value = someFormattedDate;
+   
+}
+function getphrase() {
+   var tt = document.getElementById('txtDate').value;
+   var date = new Date(tt);
+   var newdate = new Date(date);
+   var phrase=document.getElementById('phrase').value;
+   var res = phrase.split(" ");
+   if(res[0]==="tommorow")
+   newdate.setDate(newdate.getDate()+1);
+   else if(res[1]==="days" && res[2]==="earlier")
+   newdate.setDate(newdate.getDate()-parseInt(res[0]));
+   else if(res[1]==="days" && res[2]==="after")
+   newdate.setDate(newdate.getDate()+parseInt(res[0]));
+   else if(res[1]==="months" && res[2]==="after")
+   newdate.setDate(newdate.getDate()+31*parseInt(res[0]));
+   else if(res[1]==="months" && res[2]==="earlier")
+   newdate.setDate(newdate.getDate()-parseInt(res[0]));
+   else if(res[1]==="years" && res[2]==="after")
+   newdate.setDate(newdate.getDate()+365*parseInt(res[0]));
+   else if(res[1]==="years" && res[2]==="earlier")
+   newdate.setDate(newdate.getDate()-365*parseInt(res[0]));
+   else if(res[1]==="years" && res[3]==="months" && res[5]==="days"&& res[6]==="after")
+   newdate.setDate(newdate.getDate()+365*parseInt(res[0])+31*parseInt(res[2])+parseInt(res[4]));
+   else if(res[1]==="years" && res[3]==="months" && res[5]==="days"&& res[6]==="earlier")
+   newdate.setDate(newdate.getDate()-365*parseInt(res[0])-31*parseInt(res[2])-parseInt(res[4]));
+   else
+   newdate.setDate(newdate.getDate());
+   var dd = newdate.getDate();
+   var mm = newdate.getMonth() + 1;
+   var y = newdate.getFullYear();
+
+   var someFormattedDate = mm + '/' + dd + '/' + y;
+      document.getElementById('fill').value = someFormattedDate;
+}
+     </script>
+
+     <h2>Enter a date in mm/dd/yy format</h2>
+
+     <p>Date:
+         <input id="txtDate" type="text" />
+     </p>
+     <p>
+      <input type="button" class="btn btn-primary btn-lg" onclick="getname()" value="Get-month-week-name" />
+   </p>
+     <p>week of day:
+      <input id="weekno" type="text" />
+  </p>
+  
+  <p>month name:
+   <input id="monthname" type="text" />
+  </p>
+  <h2>Add/subtract days,months,years to date entered and click follow_Date.</h2>
+     <p>Add days:
+      <input id="days" type="number" value="0"/>
+  </p>
+  <p>Add months:
+   <input id="months" type="number" value="0" />
+</p>
+<p>Add years:
+   <input id="years" type="number" value="0" />
+</p>
+     <p>
+         <input type="button" class="btn btn-primary btn-lg" onclick="getdate()" value="Fill Follow Date" />
+     </p>
+     <p>Follow Date:
+         <input id="follow_Date" type="text" />
+     </p>
+<h2>Enter a Natural lang Phrase (Ex. 2 years later or 5 months earlier)</h2>    
+ <p>
+     Enter natural lang phrase:
+     <input id="phrase" type="text"/>
+ </p>  
+ <p>
+    <input type="button" class="btn btn-primary btn-lg" onclick="getphrase()" value="Convert-phrase" />
+</p>
+ <p>
+     output:
+     <input id="fill" type="text"/>
+ </p>
+</p>
+</body></html>
